@@ -31,6 +31,10 @@ cpDirNotify() {
   cp -r $1 $TARGET_PATH
   echo copy $1
 }
+cpDirExNotify() {
+  rsync -a $1 $TARGET_PATH/ --exclude $2
+  echo copy $1
+}
 # ファイルコピー
 cpNotfiy() {
   cp $1 $TARGET_PATH
@@ -40,7 +44,11 @@ cpNotfiy() {
 # ファイルかディレクトリか勝手に判断してコピーする
 cpx() {
   if [[ -d $1 ]]; then
-    cpDirNotify $1
+    if [ $# -ge 2 ]; then
+      cpDirExNotify $1 $2
+    else
+      cpDirNotify $1
+    fi
   elif [[ -f $1 ]]; then
     cpNotfiy $1
   else
