@@ -67,7 +67,7 @@ createBuildDir
 cpx .hidden
 cpx test1
 cpx test2
-cpx testdir
+cpx testdir 'excludexxx'
 #############################################################
 
 # zip

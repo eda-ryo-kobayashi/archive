@@ -36,7 +36,7 @@ DIR_NAME=app_$(date +%Y%m%d)
 …
 
 cpx .gitignore</br>
-cpx app</br>
+cpx app 'build'</br>
 cpx build.gradle
 
 …
